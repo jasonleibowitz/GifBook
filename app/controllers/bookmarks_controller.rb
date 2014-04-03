@@ -1,11 +1,18 @@
 class BookmarksController < ApplicationController
 
   def index
+    # news feed / homepage
     @bookmarks = Bookmark.all
+    # add bookmark search form in index file
   end
 
   def show
     @bookmark = Bookmark.find(params[:id])
+  end
+
+  def results
+    @search_terms = params[:search_terms]
+    @giphy_urls_ary = GetGiphy.search_giphy(@search_terms)
   end
 
   def new

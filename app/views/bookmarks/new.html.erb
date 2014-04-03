@@ -1,7 +1,7 @@
 <%= form_tag user_bookmarks_path(current_user) do %>
 
   <div>
-    <% hidden_field :user_id, current_user.id  %>
+    <%= hidden_field_tag :user_id, current_user.id  %>
   </div>
 
   <div>
@@ -14,10 +14,18 @@
     <%= text_area_tag :description %>
   </div>
 
-  <div>
-    <%= label_tag :gif_url, "Paste URL Here" %>
-    <%= text_field_tag :gif_url %>
-  </div>
+  <% if session[:giphy_url] %>
+    <div>
+      <img src="<%= session[:giphy_url] %>" >
+      <%= label_tag :gif_url, "URL" %>
+      <%= text_area_tag :gif_url, session[:giphy_url] %>
+    </div>
+  <% else%>
+    <div>
+      <%= label_tag :gif_url, "Paste URL Here" %>
+      <%= text_area_tag :gif_url %>
+    </div>
+  <% end %>
 
   <div>
     <%= label_tag :tag, "Add tags" %>
