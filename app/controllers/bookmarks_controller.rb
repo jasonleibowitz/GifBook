@@ -39,7 +39,7 @@ class BookmarksController < ApplicationController
 
   def update
     @bookmark = Bookmark.find(params[:id])
-    if @bookmark.update(bookmark_params)
+    if @bookmark.update(update_bookmark_params)
       redirect_to @bookmark
     else
       render 'edit'
@@ -54,6 +54,10 @@ class BookmarksController < ApplicationController
   private
     def new_bookmark_params
       return params.permit(:user_id, :title, :description)
+    end
+
+    def update_bookmark_params
+      return params.require(:bookmark).permit(:title, :description)
     end
 
 end
