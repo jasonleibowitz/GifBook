@@ -5,19 +5,19 @@ class ApplicationController < ActionController::Base
 
 
 
-helper_method: current_user
+helper_method :current_user
 
-def current_user
-  if sessions[:id]
-    return User.find(sessions[:id])
-  else
-    return nil
+  def current_user
+    if session[:id]
+      return User.find(session[:id])
+    else
+      return nil
+    end
+  end
+
+  def require_authentication
+    if current_user == nil
+      redirect_to login_path
+    end
   end
 end
-
-def require_authentication
-  if current_user == nil
-    redirect_to login_path
-  end
-end
-

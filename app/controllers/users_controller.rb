@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
 
   def index
@@ -11,7 +11,7 @@ class UserController < ApplicationController
 
   #form needed
   def new
-    @user = User.new()
+    @user = User.new
   end
 
   #show page
