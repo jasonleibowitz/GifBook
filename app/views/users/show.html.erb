@@ -1,0 +1,12 @@
+<h1>Welcome <%= @user.first_name %></h1>
+
+<div>
+  <%= link_to "Add a Fresh Gif", new_user_bookmark_path(current_user) %>
+</div>
+
+<% @bookmarks.each do |bookmark| %>
+  <div>
+    <img src="<%= bookmark.gif.gif_url %>">
+    <%= bookmark.title %>
+  </div>
+<% end %>

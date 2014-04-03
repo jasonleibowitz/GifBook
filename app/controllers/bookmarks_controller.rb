@@ -1,4 +1,3 @@
-# bookmarks_controller.rb
 class BookmarksController < ApplicationController
 
   def index
@@ -16,10 +15,18 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = Bookmark.new(new_bookmark_params)
     @gif = Gif.create(gif_url: params[:gif_url])
-
+    @bookmark.gif_id = @gif.id
+    @tag = params[:tag].split(/ /)
+    @tag.each do |tag|
+      if !Tag.find_by(name: tag.downcase).nil?
+        @bookmark.tags << Tag.create(name: tag.downcase)
+      else
+        @bookmark.tags << Tag.find_by(name: tag.downcase)
+      end
+    end
     if @bookmark.valid?
       @bookmark.save
-      redirect_to @bookmark
+      redirect_to user_path(current_user)
     else
       flash[:notice] = "#{@bookmark.errors}"
       render 'new'
@@ -46,7 +53,7 @@ class BookmarksController < ApplicationController
 
   private
     def new_bookmark_params
-      return params.require(:bookmark).permit(:user_id, :title, :description)
+      return params.permit(:user_id, :title, :description)
     end
 
 end

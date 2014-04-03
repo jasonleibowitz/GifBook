@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
 
+  before_action :require_authentication
 
   def index
 
   end
 
   def show
-
+    @user = User.find(params[:id])
+    @bookmarks = Bookmark.where(user_id: @user.id)
   end
 
   #form needed
