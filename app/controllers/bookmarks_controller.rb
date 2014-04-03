@@ -18,7 +18,8 @@ class BookmarksController < ApplicationController
     @bookmark.gif_id = @gif.id
     @tag = params[:tag].split(/ /)
     @tag.each do |tag|
-      if !Tag.find_by(name: tag.downcase).nil?
+      binding.pry
+      if Tag.find_by(name: tag.downcase) == nil
         @bookmark.tags << Tag.create(name: tag.downcase)
       else
         @bookmark.tags << Tag.find_by(name: tag.downcase)
