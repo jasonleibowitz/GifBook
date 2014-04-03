@@ -1,0 +1,12 @@
+<!-- index.html.erb -->
+<h2>Bookmark Feed</h2>
+
+<h4>Search Giphy for new gifs!</h4>
+
+<%= form_tag('/search', method: 'get') do %>
+  
+  <%= label_tag(:search_terms, 'Search for:')  %>
+  <%= text_field_tag(:search_terms) %>
+  <%= submit_tag('Search') %>
+
+<% end %>

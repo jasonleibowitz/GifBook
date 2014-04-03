@@ -10,5 +10,6 @@ GifBook::Application.routes.draw do
 
   root 'welcome#index'
 
+  get '/search', to: 'bookmarks#results'
 
 end
