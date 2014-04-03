@@ -17,9 +17,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: millertime_app_development
+  database: coffeebook_development
   pool: 5
-  username: millertime_app
+  username: jason
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -46,15 +46,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: millertime_app_test
+  database: coffeebook_test
   pool: 5
-  username: millertime_app
+  username: jason
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: millertime_app_production
+  database: coffeebook_production
   pool: 5
-  username: millertime_app
+  username: jason
   password:
