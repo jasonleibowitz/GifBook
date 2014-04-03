@@ -1,0 +1,22 @@
+<h1>Add a Gif to Your Bookmarks</h1>
+  <%= form_for :bookmark do |f| %>
+
+    <div>
+      <% f.hidden_field :user_id, current_user.id  %>
+    </div>
+
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+
+  <% end %>
