@@ -18,7 +18,7 @@
       </div> <!-- END NAVBAR-HEADER -->
       <div class="navbar-collapse collapse" role="navigation">
         <ul class="nav navbar-nav">
-          <% unless @current_user %>
+          <% unless current_user %>
             <li><%= link_to "sign up", new_user_path %></li>
             <li><%= link_to "login", login_path %></li>
             <li><%= render "form" %></li>
