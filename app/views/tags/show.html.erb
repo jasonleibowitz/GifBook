@@ -1,6 +1,6 @@
 <h1><%= @tag.first.name.capitalize %> Gifs!</h1>
 <% @tag.each do |tag| %>
-  <% tag.bookmarks.each do |bookmark| %>
+  <% tag.bookmarks.order(created_at: :desc).each do |bookmark| %>
     <img src="<%= bookmark.gif.gif_url %>" width="300"> <br>
     <%= bookmark.title %> <br>
     <%= bookmark.created_at.strftime "%b %e %l:%M %p" %> <br>

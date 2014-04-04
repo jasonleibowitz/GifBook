@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
 
+  @@tag_filter = ["the", "a"]
+
   def index
     # news feed / homepage
     @bookmarks = Bookmark.all
@@ -23,9 +25,11 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(new_bookmark_params)
     @gif = Gif.create(gif_url: params[:gif_url])
     @bookmark.gif_id = @gif.id
-    @tag = params[:tag].split(/ /)
+    @tag = params[:tag].split
+    @@tag_filter.each do |filter_word|
+      @tag.delete(filter_word)
+    end
     @tag.each do |tag|
-      # binding.pry
       if Tag.find_by(name: tag.downcase) == nil
         @bookmark.tags << Tag.create(name: tag.downcase)
       else
@@ -48,7 +52,10 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.update(update_bookmark_params)
-      @tag = params[:bookmark][:tags].split(/ /)
+      @tag = params[:bookmark][:tags]
+      @@tag_filter.each do |filter_word|
+      @tag.delete(filter_word)
+    end
       @tag.each do |tag|
         if Tag.find_by(name: tag.downcase) == nil
           @bookmark.tags << Tag.create(name: tag.downcase)

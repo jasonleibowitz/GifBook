@@ -4,7 +4,7 @@
 
 <% @bookmarks.each do |bookmark| %>
   <div>
-    <img src="<%= bookmark.gif.gif_url %>"> <br>
+    <img src="<%= bookmark.gif.gif_url %>" width="300"> <br>
     <%= bookmark.title %> <br>
     Tags: <% bookmark.tags.each do |tag| %>
       <%= link_to"##{tag.name}", tag_path(tag) %>
