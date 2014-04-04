@@ -12,7 +12,7 @@
 
     <div>
       <%= f.label :tags %>
-      <%= f.text_field :tags, :value => "#{@bookmark.tags.map { |tag| tag.name }.join (", ")}" %>
+      <%= f.text_field :tags, :value => "#{@bookmark.tags.map { |tag| tag.name }.join (" ")}" %>
     </div>
 
     <div>
