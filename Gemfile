@@ -42,6 +42,8 @@ end
 
  gem 'will_paginate', '~> 3.0.5'
 
+ gem 'browser-timezone-rails'
+
  ruby "2.1.0"
 
 

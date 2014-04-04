@@ -8,7 +8,7 @@
       <%= link_to"##{tag.name}", tag_path(tag) %>
       <% end %> <br>
     User: <%= bookmark.user.first_name %> <%= bookmark.user.last_name %> <br>
-    Date: <%= bookmark.created_at.strftime "%b %e %l:%M %p" %>
+    Date: <%= bookmark.created_at.to_time.strftime "%b %e %l:%M %p" %>
   </div>
 <% end %>
 
