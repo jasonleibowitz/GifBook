@@ -52,10 +52,10 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.update(update_bookmark_params)
-      @tag = params[:bookmark][:tags]
+      @tag = params[:bookmark][:tags].split
       @@tag_filter.each do |filter_word|
-      @tag.delete(filter_word)
-    end
+        @tag.delete(filter_word)
+      end
       @tag.each do |tag|
         if Tag.find_by(name: tag.downcase) == nil
           @bookmark.tags << Tag.create(name: tag.downcase)
