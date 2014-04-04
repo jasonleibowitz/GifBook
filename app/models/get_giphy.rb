@@ -10,7 +10,7 @@ class GetGiphy
 
     @search_terms = search_terms.gsub(/\s/,'+')
 
-    giphy_response = HTTParty.get("#{@@url_host_path}#{@search_terms}#{@@url_api_key}")
+    giphy_response = HTTParty.get("#{@@url_host_path}#{@search_terms}#{@@url_api_key}&limit=10")
     # giphy_parsed = JSON.parse(giphy_response)
 
     # what do we return?

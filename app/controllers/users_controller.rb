@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_authentication
+  before_action :require_authentication, only: [:show, :edit, :update, :delete]
 
   def index
 
@@ -8,12 +8,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bookmarks = Bookmark.where(user_id: @user.id)
+    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc)
   end
 
   #form needed
   def new
     @user = User.new
+    @current_user = current_user
   end
 
   #show page

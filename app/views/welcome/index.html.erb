@@ -1,8 +1,8 @@
 <h1>welcome to gif book</h1>
-  <%= link_to "sign up", new_user_path %>
+
 <% @bookmarks.each do |bookmark| %>
   <div>
-    <img src="<%= bookmark.gif.gif_url %>"><br>
+    <img src="<%= bookmark.gif.gif_url %>" width="300"><br>
     Title: <%= bookmark.title %> <br>
     User: <%= bookmark.user.first_name %> <%= bookmark.user.last_name %> <br>
     Date: <%= bookmark.created_at.strftime "%b %e %l:%M %p" %>

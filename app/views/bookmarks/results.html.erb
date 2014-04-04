@@ -1,9 +1,12 @@
 <h2>Giphy Search Results</h2>
 
-<%= @giphy_urls_ary.each do |giphy| %>
+<% @giphy_urls_ary.each do |giphy| %>
   <div>
-    <img src="<%= giphy %>" alt="">
-    <% session[:giphy_url] = giphy %><br />
-    <%= link_to("Bookmark this GIF", new_user_bookmark_path(current_user)) %>
+    <img src="<%= giphy %>" alt="" width="300"><br>
+  <% if current_user %>
+    <%= link_to("Bookmark this GIF", new_user_bookmark_path(current_user)+"/?gif_id=#{giphy}") %>
+  <% else %>
+    <%= link_to "Bookmark this GIF", new_user_path %>
+  <% end %>
   </div>
 <% end %>
