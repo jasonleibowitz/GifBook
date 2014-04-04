@@ -12,6 +12,7 @@ GifBook::Application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/search', to: 'bookmarks#results'
+  get '/find', to: 'users#find'
 
   root 'welcome#index'
 

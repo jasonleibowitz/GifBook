@@ -22,14 +22,14 @@
             <li><%= link_to "sign up", new_user_path %></li>
             <li><%= link_to "login", login_path %></li>
             <li><%= link_to "search giphy: ", root_path %> </li>
-            <li><%= render "form" %></li>
+            <li><%= render "/bookmarks/giphysearch_form" %></li>
           <% else %>
             <li><%= link_to "news feed", welcome_index_path %></li>
             <li><%= link_to "my profile", user_path(current_user) %></li>
             <li><%= link_to "add a fresh gif", new_user_bookmark_path(current_user) %></li>
             <li><%= link_to "logout", logout_path %></li>
             <li><%= link_to "search giphy: ", root_path %> </li>
-            <li><%= render "form" %></li>
+            <li><%= render 'bookmarks/giphysearch_form' %></li>
           <% end %>
         </ul>
       </div> <!-- END NAVBAR-COLLAPSE COLLAPSE -->
