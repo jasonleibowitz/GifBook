@@ -1,6 +1,5 @@
 <%= form_tag('/search', method: 'get', class: 'search') do %>
 
-  <%= label_tag(:search_terms, 'search giphy:')  %>
   <%= text_field_tag(:search_terms) %>
   <%= submit_tag('Search') %>
 <% end %>
