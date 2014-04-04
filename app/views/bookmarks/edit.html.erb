@@ -1,13 +1,18 @@
 <h1>Add a Gif to Your Bookmarks</h1>
-  <%= form_for :bookmark do |f| %>
+  <%= form_for :bookmark, method: "patch", url: "/bookmarks/#{@bookmark.id}" do |f| %>
 
     <div>
-      <% f.hidden_field :user_id, current_user.id  %>
+      <%= f.hidden_field :user_id, :value => current_user.id  %>
     </div>
 
     <div>
       <%= f.label :title %>
       <%= f.text_field :title %>
+    </div>
+
+    <div>
+      <%= f.label :tags %>
+      <%= f.text_field :tags, :value => "#{@bookmark.tags.map { |tag| tag.name }.join (", ")}" %>
     </div>
 
     <div>

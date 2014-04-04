@@ -48,6 +48,15 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.update(update_bookmark_params)
+      @tag = params[:bookmark][:tags].split(/ /)
+      @tag.each do |tag|
+        if Tag.find_by(name: tag.downcase) == nil
+          @bookmark.tags << Tag.create(name: tag.downcase)
+        elsif
+          !@bookmark.tags.include? Tag.find_by(name: tag.downcase)
+          @bookmark.tags << Tag.find_by(name: tag.downcase)
+        end
+    end
       redirect_to @bookmark
     else
       render 'edit'

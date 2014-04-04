@@ -5,6 +5,7 @@ GifBook::Application.routes.draw do
     resources :bookmarks, shallow: true
   end
   resources :welcome , :only => [:index]
+  resources :tags
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

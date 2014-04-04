@@ -6,6 +6,10 @@
   <div>
     <img src="<%= bookmark.gif.gif_url %>"> <br>
     <%= bookmark.title %> <br>
+    Tags: <% bookmark.tags.each do |tag| %>
+      <%= link_to"##{tag.name}", tag_path(tag) %>
+      <% end %> <br>
     <%= bookmark.created_at.strftime "%b %e %l:%M %p" %>
+    <%= link_to 'edit', edit_bookmark_path(bookmark) %>
   </div>
 <% end %>
