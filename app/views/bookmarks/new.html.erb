@@ -19,12 +19,12 @@
       <div>
         <img src="<%= params[:gif_id] %>" width="300"><br>
         <%= label_tag :gif_url, "URL" %>
-        <%= text_area_tag :gif_url, params[:gif_id] %>
+        <%= text_field_tag :gif_url, params[:gif_id] %>
       </div>
     <% else%>
       <div>
         <%= label_tag :gif_url, "Paste URL Here" %>
-        <%= text_area_tag :gif_url %>
+        <%= text_field_tag :gif_url %>
       </div>
     <% end %>
 
