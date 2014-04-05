@@ -1,6 +1,6 @@
 <h1>welcome <%= @user.first_name.downcase %></h1>
-
-
+<%= link_to 'edit account', edit_user_path %>
+<%= will_paginate @bookmarks, class: 'digg_pagination' %> <br>
 
 <% @bookmarks.each do |bookmark| %>
   <div>
@@ -12,4 +12,5 @@
     <%= bookmark.created_at.to_time.strftime "%b %e %l:%M %p" %>
     <%= link_to 'edit', edit_bookmark_path(bookmark) %>
   </div>
-<% end %>
+<% end %> <br>
+<%= will_paginate @bookmarks, class: 'digg_pagination' %> <br>

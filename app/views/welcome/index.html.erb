@@ -1,14 +1,16 @@
 <h1>welcome to gif book</h1>
+<%= will_paginate @bookmarks, class: 'digg_pagination' %>
 
-<% @bookmarks.each do |bookmark| %>
+<% @bookmarks.each do |bookmark| %> <br>
   <div>
     <img src="<%= bookmark.gif.gif_url %>" width="300"><br>
     Title: <%= bookmark.title %> <br>
     Tags: <% bookmark.tags.each do |tag| %>
       <%= link_to"##{tag.name}", tag_path(tag) %>
       <% end %> <br>
-    User: <%= bookmark.user.first_name %> <%= bookmark.user.last_name %> <br>
+    User: <%= bookmark.user.username %> <br>
     Date: <%= bookmark.created_at.to_time.strftime "%b %e %l:%M %p" %>
   </div>
 <% end %>
-
+<br>
+<%= will_paginate @bookmarks, class: 'digg_pagination' %>
