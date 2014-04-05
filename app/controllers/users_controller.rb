@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc)
+    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
   #form needed
@@ -24,11 +24,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
   def update
-
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to @user
   end
 
   def delete
@@ -43,6 +45,7 @@ class UsersController < ApplicationController
                                   :state,
                                   :avatar_url,
                                   :email,
+                                  :username,
                                   :password,
                                   :password_confirmation)
 
