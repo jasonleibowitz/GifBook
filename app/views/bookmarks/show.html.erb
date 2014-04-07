@@ -1,2 +1,8 @@
-<img src="<%= @bookmark.gif.gif_url %>" alt="">
-<%= @bookmark.title %>
+<br>
+<img src="<%= @bookmark.gif.gif_url %>" alt=""> <br>
+Title: <%= @bookmark.title %> <br>
+Tags: <% @bookmark.tags.each do |tag| %>
+<%= link_to "##{tag.name}", tag_path(tag) %>
+<% end %> <br>
+User: <%= @bookmark.user.username %> <br>
+Date: <%= @bookmark.created_at.to_time.strftime "%b %e %l:%M %p" %>

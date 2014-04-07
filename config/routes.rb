@@ -2,8 +2,11 @@
 GifBook::Application.routes.draw do
 
   resources :users do
-    resources :bookmarks, shallow: true
+    resources :bookmarks, shallow: true do
+      resources :comments
+    end
   end
+
   resources :welcome , :only => [:index]
   resources :tags
 

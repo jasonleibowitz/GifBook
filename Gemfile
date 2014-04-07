@@ -44,6 +44,8 @@ end
 
  gem 'browser-timezone-rails'
 
+ gem 'zeroclipboard-rails'
+
  ruby "2.1.0"
 
 

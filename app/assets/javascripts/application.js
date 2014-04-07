@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //= require browser_timezone_rails/application
+//= require zeroclipboard
